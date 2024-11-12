@@ -16,7 +16,7 @@ export async function POST(request) {
 
   // Send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"Example Sender" <sasitharani@gmail.com>', // Replace with your email
+    from: '"Inshphile Enquiry form', // Replace with your email
     to: email,
     subject: subject,
     text: body,
