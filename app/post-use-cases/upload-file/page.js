@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -11,13 +11,15 @@ const UploadFile = () => {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('/api/upload', formData, {
+      const response = await axios.post('http://localhost:3001/api/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+      console.log('Server response:', response.data); // Log the server response
       setMessage(`File uploaded: ${response.data.message}`);
     } catch (err) {
+      console.error('Upload error:', err.response ? err.response.data : err.message); // Log the error
       setMessage('Failed to upload file');
     }
   };
