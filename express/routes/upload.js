@@ -6,7 +6,7 @@ const fs = require('fs');
 const router = express.Router();
 
 router.post('/', (req, res) => {
-  console.log('Request received'); // Debugging statement
+  console.log('Upload API hit'); // Logging statement
 
   const form = new IncomingForm();
   const uploadDir = path.join(__dirname, '../../uploads');
@@ -26,16 +26,17 @@ router.post('/', (req, res) => {
     const timestamp = Date.now();
     file.newFilename = `${originalName}.${timestamp}${fileExtension}`;
     file.filepath = path.join(uploadDir, file.newFilename);
+    console.log(`File upload started: ${file.filepath}`); // Logging statement
   });
 
   form.parse(req, (err, fields, files) => {
     if (err) {
-      console.error('Error parsing form:', err); // Debugging statement
+      console.error('Error parsing form:', err); // Logging statement
       return res.status(500).json({ error: 'Error parsing form' });
     }
 
-    console.log('Form parsed successfully:', fields, files); // Debugging statement
-    res.status(200).json({ message: 'Form parsed successfully', fields, files });
+    console.log('Form parsed successfully:', fields, files); // Logging statement
+    res.status(200).json({ message: 'File uploaded successfully', filePath: files.file[0].filepath });
   });
 });
 
