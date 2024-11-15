@@ -36,13 +36,13 @@ const PostUseCases = () => {
             onClick={() => navigateTo('/post-use-cases/login')}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            User Login
+            Login
           </button>
           <button
-            onClick={() => navigateTo('/post-use-cases/send-email')}
+            onClick={() => navigateTo('/payment')}
             className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            Send Email
+            Payment
           </button>
         </div>
       </div>
